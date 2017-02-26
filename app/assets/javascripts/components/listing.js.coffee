@@ -21,6 +21,7 @@
         title: ReactDOM.findDOMNode(@refs.title).value
         description: ReactDOM.findDOMNode(@refs.description).value
         price: ReactDOM.findDOMNode(@refs.price).value
+        neighborhood_id: ReactDOM.findDOMNode(@refs.neighborhood_id).value
 
       $.ajax
         method: 'PUT'
@@ -36,6 +37,7 @@
       React.DOM.tr null,
         React.DOM.td null, @props.listing.title
         React.DOM.td null, @props.listing.description
+        React.DOM.td null, @props.listing.neighborhood_id
         React.DOM.td null, amountFormat(@props.listing.price)
         React.DOM.td null,
           React.DOM.a
@@ -61,6 +63,12 @@
             type: 'text'
             defaultValue: @props.listing.description
             ref: 'description'
+        React.DOM.td null,
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
+            defaultValue: @props.listing.neighborhood_id
+            ref: 'neighborhood_id'
         React.DOM.td null,
           React.DOM.input
             className: 'form-control'
