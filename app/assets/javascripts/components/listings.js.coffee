@@ -5,18 +5,6 @@
     getDefaultProps: ->
       listings: []
 
-    credits: ->
-      credits = @state.listings.filter (val) -> val.price >= 0
-      credits.reduce ((prev, curr) ->
-        prev + parseFloat(curr.price)
-      ), 0
-    debits: ->
-      debits = @state.listings.filter (val) -> val.price < 0
-      debits.reduce ((prev, curr) ->
-        prev + parseFloat(curr.price)
-      ), 0
-    balance: ->
-      @debits() + @credits()
 
     addListing: (listing) ->
       listings = React.addons.update(@state.listings, { $push: [listing] })
@@ -39,13 +27,10 @@
         className: 'Listings'
         React.DOM.h2
           className: 'title'
-          'Listings'
+          'Bnb Listings'
         React.DOM.div
           className: 'row'
 
-        React.createElement AmountBox, type: 'success', price: @credits(), text: 'Credit'
-        React.createElement AmountBox, type: 'danger', price: @debits(), text: 'Debit'
-        React.createElement AmountBox, type: 'info', price: @balance(), text: 'Balance'
 
         React.createElement ListingForm, handleNewListing: @addListing
         React.DOM.hr null
