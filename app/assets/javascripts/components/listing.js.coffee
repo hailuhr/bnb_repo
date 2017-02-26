@@ -6,12 +6,23 @@
       e.preventDefault()
       @setState edit: !@state.edit
 
+    handleDelete: (e) ->
+      e.preventDefault()
+      $.ajax
+        method: 'DELETE'
+        url: "/listings/#{ @props.listing.id }"
+        dataType: 'JSON'
+        success: () =>
+          @props.handleDeleteListing @props.listing
+
     handleEdit: (e) ->
       e.preventDefault()
       data =
-        title: React.findDOMNode(@refs.title).value
-        description: React.findDOMNode(@refs.description).value
-        price: React.findDOMNode(@refs.price).value
+        title: ReactDOM.findDOMNode(@refs.title).value
+        description: ReactDOM.findDOMNode(@refs.description).value
+        price: ReactDOM.findDOMNode(@refs.price).value
+
+      debugger;
 
       $.ajax
         method: 'PUT'
@@ -22,15 +33,6 @@
         success: (data) =>
           @setState edit: false
           @props.handleEditListing @props.listing, data
-
-    handleDelete: (e) ->
-      e.preventDefault()
-      $.ajax
-        method: 'DELETE'
-        url: "/listings/#{ @props.listing.id }"
-        dataType: 'JSON'
-        success: () =>
-          @props.handleDeleteListing @props.listing
 
     listingRow: ->
       React.DOM.tr null,
