@@ -57,6 +57,9 @@
               React.DOM.th null, 'Title'
               React.DOM.th null, 'Description'
               React.DOM.th null, 'Neighborhood'
+              React.DOM.th null, 'Address'
+              React.DOM.th null, 'Listing Type'
+              React.DOM.th null, 'Host'
               React.DOM.th null, 'Amount'
               React.DOM.th null, 'Actions'
           React.DOM.tbody null,
