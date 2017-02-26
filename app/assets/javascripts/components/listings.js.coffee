@@ -5,11 +5,6 @@
     getDefaultProps: ->
       listings: []
 
-    # addListing: (listing) ->
-    # listings = @state.data.listings.slice()
-    # listings.push listing
-    # @setState listings: listings
-
     credits: ->
       credits = @state.listings.filter (val) -> val.price >= 0
       credits.reduce ((prev, curr) ->
@@ -22,6 +17,10 @@
       ), 0
     balance: ->
       @debits() + @credits()
+
+    addListing: (listing) ->
+      listings = React.addons.update(@state.listings, { $push: [listing] })
+      @setState listings: listings
 
     deleteRecord: (listing) ->
       records = @state.listings.slice()
