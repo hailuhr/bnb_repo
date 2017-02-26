@@ -2,6 +2,7 @@
     getInitialState: ->
       edit: false
 
+
     handleToggle: (e) ->
       e.preventDefault()
       @setState edit: !@state.edit
@@ -20,9 +21,11 @@
       data =
         title: ReactDOM.findDOMNode(@refs.title).value
         description: ReactDOM.findDOMNode(@refs.description).value
+        neighborhood_id: ReactDOM.findDOMNode(@refs.neighborhood_id).value
+        address: ReactDOM.findDOMNode(@refs.address).value
+        listing_type: ReactDOM.findDOMNode(@refs.listing_type).value
+        host_id: ReactDOM.findDOMNode(@refs.host_id).value
         price: ReactDOM.findDOMNode(@refs.price).value
-
-      debugger;
 
       $.ajax
         method: 'PUT'
@@ -38,6 +41,10 @@
       React.DOM.tr null,
         React.DOM.td null, @props.listing.title
         React.DOM.td null, @props.listing.description
+        React.DOM.td null, @props.listing.neighborhood_id
+        React.DOM.td null, @props.listing.address
+        React.DOM.td null, @props.listing.listing_type
+        React.DOM.td null, @props.listing.host_id
         React.DOM.td null, amountFormat(@props.listing.price)
         React.DOM.td null,
           React.DOM.a
@@ -55,14 +62,38 @@
           React.DOM.input
             className: 'form-control'
             type: 'text'
+            defaultValue: @props.listing.title
+            ref: 'title'
+        React.DOM.td null,
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
             defaultValue: @props.listing.description
             ref: 'description'
         React.DOM.td null,
           React.DOM.input
             className: 'form-control'
             type: 'text'
-            defaultValue: @props.listing.title
-            ref: 'title'
+            defaultValue: @props.listing.neighborhood_id
+            ref: 'neighborhood_id'
+        React.DOM.td null,
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
+            defaultValue: @props.listing.address
+            ref: 'address'
+        React.DOM.td null,
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
+            defaultValue: @props.listing.listing_type
+            ref: 'listing_type'
+        React.DOM.td null,
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
+            defaultValue: @props.listing.host_id
+            ref: 'host_id'
         React.DOM.td null,
           React.DOM.input
             className: 'form-control'

@@ -15,3 +15,13 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.title {
+  text-align: center;
+}
+
+.form-inline {
+  text-align: center;
+  left-margin: auto;
+  right-margin: auto;
+}
