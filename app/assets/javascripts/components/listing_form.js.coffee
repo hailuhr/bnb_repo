@@ -13,11 +13,10 @@
 
   handleSubmit: (e) ->
     e.preventDefault()
-    $.post '', { listing: @state }, (data) =>
+    $.ajax type: "POST", url:'', data: {listing: @state}, (data) =>
       @props.handleNewListing data
       @setState @getInitialState()
-    , 'JSON'
-
+       , 'JSON'
 
   render: ->
     React.DOM.form
