@@ -4,13 +4,15 @@
     description: ''
     price: ''
 
+  valid: ->
+    @state.title && @state.description && @state.price
+
   handleChange: (e) ->
     name = e.target.name
     @setState "#{ name }": e.target.value
 
   handleSubmit: (e) ->
     e.preventDefault()
-    
     $.ajax type: "POST", url:'/listings', data: {listing: @state}, (data) =>
       @props.handleNewListing data
       @setState @getInitialState()
@@ -86,4 +88,5 @@
       React.DOM.button
         type: 'submit'
         className: 'btn btn-primary'
+        disabled: !@valid()
         'Create listing'
