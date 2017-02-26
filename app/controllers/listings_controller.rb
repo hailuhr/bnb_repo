@@ -22,11 +22,22 @@ class ListingsController < ApplicationController
     end
   end
 
+
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      render json: @listing
+    else
+      render json: @listing.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
     head :no_content
   end
+
 
 private
 

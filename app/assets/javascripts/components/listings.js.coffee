@@ -28,6 +28,11 @@
       listings.splice index, 1
       @replaceState listings: listings
 
+    updateListing: (listing, data) ->
+      index = @state.listings.indexOf listing
+      listings = React.addons.update(@state.listings, { $splice: [[index, 1, data]] })
+      @replaceState listings: listings
+
     render: ->
 
       React.DOM.div
@@ -55,4 +60,4 @@
               React.DOM.th null, 'Actions'
           React.DOM.tbody null,
             for listing in @state.listings
-              React.createElement Listing, key: listing.id, listing: listing, handleDeleteListing: @deleteListing
+              React.createElement Listing, key: listing.id, listing: listing, handleDeleteListing: @deleteListing, handleEditListing: @updateListing
