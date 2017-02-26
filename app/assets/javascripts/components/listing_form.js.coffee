@@ -13,10 +13,11 @@
 
   handleSubmit: (e) ->
     e.preventDefault()
-    $.post '', { record: @state }, (data) =>
-      @props.handleNewRecord data
+    $.post '', { listing: @state }, (data) =>
+      @props.handleNewListing data
       @setState @getInitialState()
     , 'JSON'
+
 
   render: ->
     React.DOM.form
@@ -53,4 +54,4 @@
         type: 'submit'
         className: 'btn btn-primary'
         disabled: !@valid()
-        'Create record'
+        'Create listing'

@@ -1,6 +1,9 @@
 class ListingsController < ApplicationController
   def index
     @listings = Listing.all
+
+    @listing = Listing.new
+
   end
 
   def new
@@ -19,9 +22,15 @@ class ListingsController < ApplicationController
     end
   end
 
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    head :no_content
+  end
+
 private
 
   def listing_params
-    params.require(:listing).permit(:title, :amount, :date)
+    params.require(:listing).permit(:title, :price, :description)
   end
 end
