@@ -22,8 +22,6 @@
         description: ReactDOM.findDOMNode(@refs.description).value
         price: ReactDOM.findDOMNode(@refs.price).value
 
-      debugger;
-
       $.ajax
         method: 'PUT'
         url: "/listings/#{ @props.listing.id }"
@@ -55,14 +53,14 @@
           React.DOM.input
             className: 'form-control'
             type: 'text'
-            defaultValue: @props.listing.description
-            ref: 'description'
+            defaultValue: @props.listing.title
+            ref: 'title'
         React.DOM.td null,
           React.DOM.input
             className: 'form-control'
             type: 'text'
-            defaultValue: @props.listing.title
-            ref: 'title'
+            defaultValue: @props.listing.description
+            ref: 'description'
         React.DOM.td null,
           React.DOM.input
             className: 'form-control'
